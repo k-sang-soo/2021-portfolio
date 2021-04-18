@@ -1,0 +1,31 @@
+@mixin breakpoint($point) {
+    @if $point == laptop {
+        @media screen and(max-width: 1280px) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media screen and(max-width: 768px) {
+            @content;
+        }
+    } @else if $point == mobile {
+        @media screen and (max-width: 640px) {
+            @content;
+        }
+    }
+}
+
+@mixin grid-padding {
+    padding: 96px;
+
+    @include breakpoint(laptop) {
+        padding: 24px;
+    }
+
+    @include breakpoint(tablet) {
+        padding: 24px;
+    }
+
+    @include breakpoint(mobile) {
+        padding: 20px;
+    }
+}
