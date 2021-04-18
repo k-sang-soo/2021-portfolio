@@ -15,17 +15,23 @@
 }
 
 @mixin grid-padding {
-    padding: 96px;
+    max-width: 1812px;
+    margin: 0 auto;
+    padding: 28px;
 
     @include breakpoint(laptop) {
-        padding: 24px;
-    }
-
-    @include breakpoint(tablet) {
         padding: 24px;
     }
 
     @include breakpoint(mobile) {
         padding: 20px;
     }
+}
+
+@mixin seaction-title($t: transparent, $s: 0.008em) {
+    font-size: 6.770833333333333vw;
+    font-weight: 700;
+    color: $t;
+    -webkit-text-stroke: $s white;
+    line-height: 0.808em;
 }

@@ -68,6 +68,16 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
 /*********************** header *************************/
 .header {
   position: fixed;
@@ -84,18 +94,14 @@ a {
   width: 100%;
   font-size: 16px;
   font-weight: 600;
-  padding: 96px;
+  max-width: 1812px;
+  margin: 0 auto;
+  padding: 28px;
   padding-bottom: 0;
   z-index: 99;
 }
 
 @media screen and (max-width: 1280px) {
-  .header {
-    padding: 24px;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .header {
     padding: 24px;
   }
@@ -155,7 +161,7 @@ a {
 
 .main_front-text p {
   color: transparent;
-  -webkit-text-stroke: 0.02em white;
+  -webkit-text-stroke: 0.008em white;
 }
 
 .main_banner-box {
@@ -206,7 +212,113 @@ a {
 
 /*********************** about *************************/
 .about {
-  height: 100vh;
+  max-width: 1812px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+@media screen and (max-width: 1280px) {
+  .about {
+    padding: 24px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about {
+    padding: 20px;
+  }
+}
+
+.about_main-title-box p span {
+  font-size: 6.770833333333333vw;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 0.008em white;
+  line-height: 0.808em;
+}
+
+.about_main-title-box p:nth-child(2) span {
+  font-size: 6.770833333333333vw;
+  font-weight: 700;
+  color: #fff;
+  -webkit-text-stroke: 0 white;
+  line-height: 0.808em;
+}
+
+.about_introduce {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_introduce .introduce_img-box {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.about_introduce .introduce_img-box img {
+  width: 100%;
+  height: auto;
+}
+
+.about_introduce .introduce_text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-left: 24px;
+  word-break: keep-all;
+}
+
+.about_career {
+  margin-top: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about_career .career_record,
+.about_career .career_stack {
+  font-size: 24px;
+}
+
+.about_career .career_record .title,
+.about_career .career_stack .title {
+  display: inline-block;
+  margin-bottom: 1.5em;
+  padding-bottom: 8px;
+  font-weight: 500;
+  border-bottom: 2px solid #fff;
+}
+
+.about_career .career_record .list,
+.about_career .career_stack .list {
+  font-size: 18px;
+}
+
+.about_career .career_record .list li,
+.about_career .career_stack .list li {
+  margin-bottom: 1em;
+}
+
+.about_career .career_record {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.about_career .career_stack {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 /*********************** 반응형 1280px *************************/

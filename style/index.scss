@@ -67,6 +67,16 @@ a {
     text-decoration: none;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+
 /*********************** header *************************/
 .header {
     position: fixed;
@@ -130,7 +140,7 @@ a {
     &_front-text {
         p {
             color: transparent;
-            -webkit-text-stroke: 0.02em rgb(255, 255, 255);
+            -webkit-text-stroke: 0.008em rgb(255, 255, 255);
         }
     }
 
@@ -169,7 +179,79 @@ a {
 }
 /*********************** about *************************/
 .about {
-    height: 100vh;
+    @include grid-padding;
+
+    &_main-title-box {
+        p {
+            span {
+                @include seaction-title;
+            }
+
+            &:nth-child(2) {
+                span {
+                    @include seaction-title(#fff, 0);
+                }
+            }
+        }
+    }
+
+    &_introduce {
+        display: flex;
+        align-items: center;
+        .introduce_img-box {
+            flex: 2;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .introduce_text {
+            flex: 1;
+            font-family: $kor-language;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.8;
+            margin-left: 24px;
+            word-break: keep-all;
+        }
+    }
+
+    &_career {
+        margin-top: 120px;
+        display: flex;
+
+        .career_record,
+        .career_stack {
+            font-size: 24px;
+
+            .title {
+                display: inline-block;
+                margin-bottom: 1.5em;
+                padding-bottom: 8px;
+                font-weight: 500;
+                border-bottom: 2px solid #fff;
+            }
+
+            .list {
+                font-size: 18px;
+
+                li {
+                    margin-bottom: 1em;
+                }
+            }
+        }
+
+        .career_record {
+            flex: 1;
+            font-family: $kor-language;
+        }
+
+        .career_stack {
+            flex: 1;
+        }
+    }
 }
 
 /*********************** 반응형 1280px *************************/

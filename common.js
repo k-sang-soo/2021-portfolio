@@ -1,3 +1,5 @@
+'use strict';
+
 window.addEventListener('load', () => {
     gsap.defaults({ ease: 'power2' });
 
