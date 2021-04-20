@@ -94,14 +94,18 @@ a {
   width: 100%;
   font-size: 16px;
   font-weight: 600;
-  max-width: 1812px;
-  margin: 0 auto;
-  padding: 28px;
+  padding: 96px;
   padding-bottom: 0;
   z-index: 99;
 }
 
 @media screen and (max-width: 1280px) {
+  .header {
+    padding: 28px;
+  }
+}
+
+@media screen and (max-width: 960px) {
   .header {
     padding: 24px;
   }
@@ -143,9 +147,18 @@ a {
 /*********************** main *************************/
 .main {
   position: relative;
-  overflow: hidden;
-  padding: 80px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
   margin-top: 128px;
+  overflow: hidden;
 }
 
 .main_back-text, .main_front-text {
@@ -159,7 +172,15 @@ a {
   white-space: nowrap;
 }
 
-.main_front-text p {
+.main_back-text p, .main_front-text p {
+  overflow: hidden;
+}
+
+.main_back-text p span, .main_front-text p span {
+  display: inline-block;
+}
+
+.main_front-text span {
   color: transparent;
   -webkit-text-stroke: 0.008em white;
 }
@@ -167,11 +188,20 @@ a {
 .main_banner-box {
   width: 31.66vw;
   height: 51.249vw;
-  margin: 0 auto;
   position: relative;
+  top: 6.25vw;
   background-image: url("/img/main-banner.jpg");
   background-size: cover;
   background-position: center center;
+}
+
+.main_banner-box::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 0;
+  background: #000;
 }
 
 .main_banner-box .main_scroll-box {
@@ -212,12 +242,16 @@ a {
 
 /*********************** about *************************/
 .about {
-  max-width: 1812px;
-  margin: 0 auto;
-  padding: 28px;
+  padding: 96px;
 }
 
 @media screen and (max-width: 1280px) {
+  .about {
+    padding: 28px;
+  }
+}
+
+@media screen and (max-width: 960px) {
   .about {
     padding: 24px;
   }
@@ -229,7 +263,12 @@ a {
   }
 }
 
+.about_main-title-box p {
+  overflow: hidden;
+}
+
 .about_main-title-box p span {
+  display: inline-block;
   font-size: 6.770833333333333vw;
   font-weight: 700;
   color: transparent;
@@ -237,12 +276,25 @@ a {
   line-height: 0.808em;
 }
 
+@media screen and (max-width: 640px) {
+  .about_main-title-box p span {
+    font-size: 11.11111111111111vw;
+  }
+}
+
 .about_main-title-box p:nth-child(2) span {
+  display: inline-block;
   font-size: 6.770833333333333vw;
   font-weight: 700;
   color: #fff;
   -webkit-text-stroke: 0 white;
   line-height: 0.808em;
+}
+
+@media screen and (max-width: 640px) {
+  .about_main-title-box p:nth-child(2) span {
+    font-size: 11.11111111111111vw;
+  }
 }
 
 .about_introduce {
@@ -252,12 +304,23 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 1em;
 }
 
 .about_introduce .introduce_img-box {
+  position: relative;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
+}
+
+.about_introduce .introduce_img-box::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 0;
+  background: #000;
 }
 
 .about_introduce .introduce_img-box img {
@@ -287,12 +350,15 @@ a {
 .about_career .career_record,
 .about_career .career_stack {
   font-size: 24px;
+  padding-right: 24px;
+  word-break: keep-all;
+  line-height: 1.8;
 }
 
 .about_career .career_record .title,
 .about_career .career_stack .title {
   display: inline-block;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   padding-bottom: 8px;
   font-weight: 500;
   border-bottom: 2px solid #fff;
@@ -305,7 +371,7 @@ a {
 
 .about_career .career_record .list li,
 .about_career .career_stack .list li {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .about_career .career_record {
@@ -332,11 +398,42 @@ a {
   }
 }
 
-/*********************** 반응형 768px *************************/
-@media screen and (max-width: 768px) {
+/*********************** 반응형 960px *************************/
+@media screen and (max-width: 960px) {
   .main_banner-box {
     width: 45.83333333333333vw;
     height: 74.21875vw;
+  }
+  .about_introduce {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .about_introduce .introduce_text {
+    margin-top: 1.333em;
+    margin-left: 0;
+  }
+  .about_career {
+    margin-top: 80px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .about_career .career_record,
+  .about_career .career_stack {
+    padding: 0;
+  }
+  .about_career .career_record .title,
+  .about_career .career_stack .title {
+    padding-bottom: 4px;
+  }
+  .about_career .career_stack {
+    margin-top: 80px;
   }
 }
 
@@ -397,6 +494,21 @@ a {
     position: absolute;
     left: calc(-34.3% / 2);
     top: calc(-23.4% / 2);
+  }
+  .about_introduce .introduce_text {
+    font-size: 14px;
+  }
+  .about_career .career_record,
+  .about_career .career_stack {
+    font-size: 18px;
+  }
+  .about_career .career_record .title,
+  .about_career .career_stack .title {
+    padding-bottom: 0;
+  }
+  .about_career .career_record .list,
+  .about_career .career_stack .list {
+    font-size: 14px;
   }
 }
 /*# sourceMappingURL=index.css.map */
