@@ -196,7 +196,6 @@ a {
 
     &_main-title-box {
         p {
-            overflow: hidden;
             span {
                 @include seaction-title;
             }
@@ -252,9 +251,7 @@ a {
             .title {
                 display: inline-block;
                 margin-bottom: 1em;
-                padding-bottom: 8px;
                 font-weight: 500;
-                border-bottom: 2px solid #fff;
             }
 
             .list {
@@ -269,10 +266,158 @@ a {
         .career_record {
             flex: 1;
             font-family: $kor-language;
+            .title {
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background: #fff;
+                }
+            }
         }
 
         .career_stack {
             flex: 1;
+            .title {
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background: #fff;
+                }
+            }
+        }
+    }
+}
+
+/*********************** work *************************/
+.work {
+    @include grid-padding;
+    &_main-title-box {
+        text-align: right;
+        p {
+            span {
+                @include seaction-title;
+            }
+
+            &:nth-child(2) {
+                span {
+                    @include seaction-title(#fff, 0);
+                }
+            }
+        }
+    }
+
+    &_project {
+        margin-top: 50vh;
+        .work_project_num {
+            @include num-title;
+
+            &.left {
+                text-align: left;
+            }
+        }
+
+        .work_project_img-box {
+            width: 51.979166666666664vw;
+
+            &.right {
+                margin-left: auto;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .work_project_info-wrapper {
+            &.right {
+                text-align: right;
+            }
+            .project_day {
+                margin-top: 24px;
+                font-size: 16px;
+            }
+
+            .project_title {
+                margin-top: 30px;
+                font-size: 26px;
+                font-weight: 600;
+            }
+
+            .project_ability {
+                display: inline-block;
+                margin-top: 12px;
+                font-family: $en-language;
+                font-size: 18px;
+
+                &:not(:last-child) {
+                    margin-right: 24px;
+                }
+
+                &.right:not(:first-child) {
+                    margin-left: 24px;
+                    margin-right: 0;
+                }
+            }
+
+            .project_link {
+                position: relative;
+                width: 207px;
+                margin-top: 36px;
+                text-align: center;
+                &.right {
+                    margin-left: auto;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 52px;
+                    border: 1px solid #fff;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: 0.3s ease-out;
+                    z-index: -1;
+                }
+                a {
+                    display: inline-block;
+                    font-family: $en-language;
+                    font-size: 24px;
+                    font-weight: 600;
+                    padding: 18px 0;
+                    transition: 0.3s ease-out;
+                }
+
+                i {
+                    margin-left: 10px;
+                    font-size: 18px;
+                    transition: 0.3s ease-out;
+                }
+
+                &:hover a {
+                    color: #000;
+                }
+
+                &:hover i {
+                    color: #000;
+                }
+
+                &:hover::before {
+                    width: 100%;
+                    background: #fff;
+                    border-radius: 52px;
+                }
+
+                &:hover i {
+                    transform: translateX(6px);
+                }
+            }
         }
     }
 }
@@ -292,6 +437,11 @@ a {
 /*********************** 반응형 960px *************************/
 @media screen and (max-width: 960px) {
     .main {
+        &_back-text,
+        &_front-text {
+            font-size: 10.416666666666668vw;
+        }
+
         &_banner-box {
             width: 45.83333333333333vw;
             height: 74.21875vw;
@@ -316,14 +466,18 @@ a {
             .career_record,
             .career_stack {
                 padding: 0;
-
-                .title {
-                    padding-bottom: 4px;
-                }
             }
 
             .career_stack {
                 margin-top: 80px;
+            }
+        }
+    }
+
+    .work {
+        &_project {
+            .work_project_img-box {
+                width: 100%;
             }
         }
     }
@@ -348,6 +502,7 @@ a {
             padding-top: 112px;
             padding-left: 12px;
             background: #000;
+            transform: translateX(100%);
             transition: 0.5s ease-out;
             ul {
                 flex-direction: column;
@@ -370,6 +525,7 @@ a {
         }
         .view-menu {
             opacity: 1;
+            transform: translateX(0);
         }
     }
 
@@ -413,6 +569,47 @@ a {
 
                 .list {
                     font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .work {
+        &_project {
+            .work_project_info-wrapper {
+                .project_day {
+                    margin-top: 12px;
+                    font-size: 12px;
+                }
+
+                .project_title {
+                    margin-top: 24px;
+                    font-size: 22px;
+                }
+
+                .project_ability {
+                    margin-top: 8px;
+                    font-size: 14px;
+                }
+
+                .project_link {
+                    margin-top: 26px;
+                    width: 164px;
+
+                    &::before {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    a {
+                        font-size: 18px;
+                        padding: 12px 0;
+                    }
+
+                    i {
+                        margin-left: 6px;
+                        font-size: 16px;
+                    }
                 }
             }
         }

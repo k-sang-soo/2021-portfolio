@@ -80,9 +80,21 @@ window.addEventListener('load', () => {
     })();
 
     const sectionText = (() => {
-        const mainText = document.querySelectorAll('.about_main-title-box > p > span');
-        mainText.forEach((el) => {
-            console.dir(el.parentElement.parentElement);
+        const aboutMainText = document.querySelectorAll('.about_main-title-box > .text-wrapper > span');
+        const workMainText = document.querySelectorAll('.work_main-title-box > .text-wrapper > span');
+        aboutMainText.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 200,
+                duration: 0.8,
+            });
+        });
+
+        workMainText.forEach((el) => {
             gsap.from(el, {
                 scrollTrigger: {
                     trigger: el.parentElement.parentElement,
@@ -98,27 +110,71 @@ window.addEventListener('load', () => {
     const aboutMe = (() => {
         ScrollTrigger.create({
             trigger: '.introduce_img-box',
-            start: 'bottom bottom',
-            markers: true,
+            start: 'center bottom',
             animation: gsap.from(CSSRulePlugin.getRule('.about_introduce .introduce_img-box::before'), {
                 cssRule: { height: '100%' },
                 duration: 1,
             }),
         });
+    })();
 
-        // gsap.from(
-        //     CSSRulePlugin.getRule('.about_introduce .introduce_img-box::before'),
-        //     {
-        //         scrollTrigger: {
-        //             trigger: '.introduce_img-box',
-        //             start: 'center bottom',
-        //             markers: true,
-        //         },
-        //     },
-        //     {
-        //         cssRule: { height: '100%' },
-        //         duration: 1,
-        //     },
-        // );
+    const subTextAnimation = (() => {
+        const aboutSubText = document.querySelectorAll('.introduce_text > .text-wrapper-sub > span');
+        const aboutCarrerRecord = document.querySelectorAll('.career_record .text-wrapper span');
+        const aboutCarrerStack = document.querySelectorAll('.career_stack .text-wrapper span');
+
+        aboutSubText.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 300,
+                duration: 0.8,
+            });
+        });
+
+        aboutCarrerRecord.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 300,
+                duration: 0.8,
+            });
+        });
+
+        aboutCarrerStack.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 300,
+                duration: 0.8,
+            });
+        });
+
+        ScrollTrigger.create({
+            trigger: '.career_record',
+            start: 'bottom bottom',
+            animation: gsap.from(CSSRulePlugin.getRule('.about_career .career_record .title::after'), {
+                cssRule: { width: '0%' },
+                duration: 1,
+            }),
+        });
+
+        ScrollTrigger.create({
+            trigger: '.career_stack',
+            start: 'bottom bottom',
+            animation: gsap.from(CSSRulePlugin.getRule('.about_career .career_stack .title::after'), {
+                cssRule: { width: '0%' },
+                duration: 1,
+            }),
+        });
     })();
 });
