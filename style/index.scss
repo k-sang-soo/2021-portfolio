@@ -311,7 +311,7 @@ a {
     }
 
     &_project {
-        margin-top: 50vh;
+        margin-top: 60vh;
         .work_project_num {
             @include num-title;
 
@@ -420,6 +420,56 @@ a {
             }
         }
     }
+}
+/*********************** contact *************************/
+.contact {
+    &_main-title-box {
+        text-align: center;
+        p {
+            span {
+                @include seaction-title;
+            }
+
+            &:nth-child(2) {
+                span {
+                    @include seaction-title(#fff, 0);
+                }
+            }
+        }
+    }
+    &_text {
+        margin-top: 18.51851851851852vh;
+        text-align: center;
+        .text_box {
+            &:not(:last-child) {
+                margin-bottom: 70px;
+            }
+
+            .text_title {
+                font-size: 36px;
+                font-weight: 600;
+                span {
+                    margin-bottom: 8px;
+                }
+            }
+            .sub_text {
+                font-size: 28px;
+                font-weight: 500;
+
+                a {
+                    margin-bottom: 8px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    @include grid-padding;
+    margin-top: 22.22222222222222vh;
+    text-align: center;
+    font-size: 16px;
 }
 
 /*********************** 반응형 1280px *************************/
@@ -590,6 +640,14 @@ a {
                 .project_ability {
                     margin-top: 8px;
                     font-size: 14px;
+
+                    &:not(:last-child) {
+                        margin-right: 12px;
+                    }
+
+                    &.right:not(:first-child) {
+                        margin-left: 12px;
+                    }
                 }
 
                 .project_link {
@@ -613,5 +671,29 @@ a {
                 }
             }
         }
+    }
+
+    .contact {
+        &_text {
+            .text_box {
+                .text_title {
+                    font-size: 22px;
+                    span {
+                        margin-bottom: 4px;
+                    }
+                }
+
+                .sub_text {
+                    font-size: 18px;
+                    a {
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        font-size: 12px;
     }
 }

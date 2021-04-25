@@ -82,6 +82,7 @@ window.addEventListener('load', () => {
     const sectionText = (() => {
         const aboutMainText = document.querySelectorAll('.about_main-title-box > .text-wrapper > span');
         const workMainText = document.querySelectorAll('.work_main-title-box > .text-wrapper > span');
+        const contactMainText = document.querySelectorAll('.contact_main-title-box > .text-wrapper > span');
         aboutMainText.forEach((el) => {
             gsap.from(el, {
                 scrollTrigger: {
@@ -95,6 +96,18 @@ window.addEventListener('load', () => {
         });
 
         workMainText.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 200,
+                duration: 0.8,
+            });
+        });
+
+        contactMainText.forEach((el) => {
             gsap.from(el, {
                 scrollTrigger: {
                     trigger: el.parentElement.parentElement,
@@ -122,6 +135,8 @@ window.addEventListener('load', () => {
         const aboutSubText = document.querySelectorAll('.introduce_text > .text-wrapper-sub > span');
         const aboutCarrerRecord = document.querySelectorAll('.career_record .text-wrapper span');
         const aboutCarrerStack = document.querySelectorAll('.career_stack .text-wrapper span');
+        const contactText = document.querySelectorAll('.contact_text .text-wrapper span');
+        const contactSubText = document.querySelectorAll('.contact_text .text-wrapper a');
 
         aboutSubText.forEach((el) => {
             gsap.from(el, {
@@ -159,6 +174,30 @@ window.addEventListener('load', () => {
             });
         });
 
+        contactText.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 300,
+                duration: 0.8,
+            });
+        });
+
+        contactSubText.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el.parentElement.parentElement,
+                    start: 'bottom bottom',
+                },
+                rotation: 15,
+                yPercent: 300,
+                duration: 0.8,
+            });
+        });
+
         ScrollTrigger.create({
             trigger: '.career_record',
             start: 'bottom bottom',
@@ -175,6 +214,32 @@ window.addEventListener('load', () => {
                 cssRule: { width: '0%' },
                 duration: 1,
             }),
+        });
+    })();
+
+    const workSectionScroll = (() => {
+        const workSectionNum = document.querySelectorAll('.work_project_num');
+        const workSectionWrapper = document.querySelectorAll('.work_project_wrapper');
+        workSectionNum.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top bottom',
+                    scrub: 2,
+                },
+                yPercent: -200,
+            });
+        });
+
+        workSectionWrapper.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top bottom',
+                    scrub: 2,
+                },
+                yPercent: -200,
+            });
         });
     })();
 });
