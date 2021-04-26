@@ -56,6 +56,11 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1;
   background: #000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow-x: hidden;
 }
 
 ol,
@@ -93,6 +98,22 @@ a {
 ::-webkit-scrollbar-thumb {
   background: #999;
   border-radius: 10px;
+}
+
+/**************** mouse *******************/
+.mouse-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 999;
 }
 
 /*********************** header *************************/
@@ -743,6 +764,9 @@ footer {
 
 /*********************** 반응형 960px *************************/
 @media screen and (max-width: 960px) {
+  .mouse-effect {
+    display: none;
+  }
   .main_back-text, .main_front-text {
     font-size: 10.416666666666668vw;
   }

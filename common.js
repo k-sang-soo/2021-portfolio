@@ -1,6 +1,13 @@
 'use strict';
 
 window.addEventListener('load', () => {
+    window.addEventListener('mousemove', (e) => {
+        let x = e.pageX;
+        let y = e.pageY;
+        const mouseEffect = document.querySelector('.mouse-effect');
+        gsap.to(mouseEffect, { duration: 0.1, left: x, top: y });
+    });
+
     const menuClick = (() => {
         const menuBtn = document.querySelector('.header_mobile-menu');
         const nav = document.querySelector('.header > nav');
