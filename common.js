@@ -1,12 +1,83 @@
 'use strict';
 
 window.addEventListener('load', () => {
-    window.addEventListener('mousemove', (e) => {
-        let x = e.pageX;
-        let y = e.pageY;
-        const mouseEffect = document.querySelector('.mouse-effect');
-        gsap.to(mouseEffect, { duration: 0.1, left: x, top: y });
-    });
+    const cursor = (() => {
+        const point = (e) => {
+            let x = e.pageX;
+            let y = e.pageY;
+            let g = 1;
+            const mouseEffect = document.querySelector('.mouse-effect');
+            gsap.to(mouseEffect, { duration: 0.1, left: x, top: y });
+            return g;
+        };
+
+        window.addEventListener('mousemove', point);
+    })();
+
+    const navCursor = (() => {
+        const navList = document.querySelectorAll('.mouse-circle');
+        const cursor = document.querySelector('.mouse-effect');
+        navList.forEach((el) => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('in-nav');
+            });
+
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('in-nav');
+            });
+        });
+    })();
+
+    const smoothScroll = (targets, duration) => {
+        const target = document.querySelector(targets);
+        const targetPosition = target.getBoundingClientRect().top;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        const easeIn = (t, b, c, d) => {
+            t /= d;
+            return c * t * t * t * t + b;
+        };
+
+        const animation = (currentTime) => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeIn(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        };
+
+        requestAnimationFrame(animation);
+    };
+
+    const navClick = (() => {
+        const navList = document.querySelectorAll('.header > nav a');
+        navList.forEach((el, index) => {
+            el.addEventListener('click', () => {
+                switch (index) {
+                    case 0:
+                        smoothScroll('.main', 1000);
+                        console.log(el);
+                        break;
+                    case 1:
+                        smoothScroll('.about', 1000);
+                        console.log(el);
+                        break;
+                    case 2:
+                        smoothScroll('.work', 1000);
+                        console.log(el);
+                        break;
+                    case 3:
+                        smoothScroll('.contact', 1000);
+                        console.log(el);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        });
+    })();
 
     const menuClick = (() => {
         const menuBtn = document.querySelector('.header_mobile-menu');

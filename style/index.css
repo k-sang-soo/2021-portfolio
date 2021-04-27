@@ -116,6 +116,12 @@ a {
   z-index: 999;
 }
 
+.mouse-effect.in-nav {
+  width: 100px;
+  height: 100px;
+  background: white;
+}
+
 /*********************** header *************************/
 .header {
   position: fixed;
