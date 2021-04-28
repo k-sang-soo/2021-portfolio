@@ -28,49 +28,80 @@ window.addEventListener('load', () => {
         });
     })();
 
-    const smoothScroll = (targets, duration) => {
-        const target = document.querySelector(targets);
-        const targetPosition = target.getBoundingClientRect().top;
+    const smoothScroll = (target) => {
+        const targetTop = document.querySelector(target).offsetTop;
         const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
+        const distance = targetTop - startPosition;
+        const duration = 1000;
+        let start = null;
 
-        const easeIn = (t, b, c, d) => {
-            t /= d;
-            return c * t * t * t * t + b;
+        const easeInOutQuad = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
         };
 
-        const animation = (currentTime) => {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = easeIn(timeElapsed, startPosition, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
+        const step = (timestamp) => {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            window.scrollTo(0, easeInOutQuad(progress, startPosition, distance, duration));
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            }
         };
 
-        requestAnimationFrame(animation);
+        window.requestAnimationFrame(step);
     };
+
+    // const t = (targets) => {
+    //     const target = document.querySelector(targets);
+    //     const targetPosition = target.getBoundingClientRect().top;
+    //     const startPosition = window.pageYOffset;
+    //     const result = targetPosition + startPosition;
+
+    //     console.log('상대좌표', targetPosition);
+    //     console.log('절대좌표', startPosition);
+    //     console.log('연산', result);
+    //     return result;
+    // };
 
     const navClick = (() => {
         const navList = document.querySelectorAll('.header > nav a');
         navList.forEach((el, index) => {
-            el.addEventListener('click', () => {
+            el.addEventListener('click', (e) => {
                 switch (index) {
                     case 0:
-                        smoothScroll('.main', 1000);
-                        console.log(el);
+                        e.preventDefault();
+                        smoothScroll('.main');
+                        // window.scrollTo({
+                        //     top: t('.main'),
+                        //     behavior: 'smooth',
+                        // });
                         break;
                     case 1:
-                        smoothScroll('.about', 1000);
-                        console.log(el);
+                        e.preventDefault();
+                        smoothScroll('.about');
+                        // window.scrollTo({
+                        //     top: t('.about'),
+                        //     behavior: 'smooth',
+                        // });
                         break;
                     case 2:
-                        smoothScroll('.work', 1000);
-                        console.log(el);
+                        e.preventDefault();
+                        smoothScroll('.work');
+                        // window.scrollTo({
+                        //     top: t('.work'),
+                        //     behavior: 'smooth',
+                        // });
                         break;
                     case 3:
-                        smoothScroll('.contact', 1000);
-                        console.log(el);
+                        e.preventDefault();
+                        smoothScroll('.contact');
+                        // window.scrollTo({
+                        //     top: t('.contact'),
+                        //     behavior: 'smooth',
+                        // });
                         break;
                     default:
                         break;
@@ -305,7 +336,7 @@ window.addEventListener('load', () => {
                     start: 'top bottom',
                     scrub: 2,
                 },
-                yPercent: -200,
+                yPercent: -80,
             });
         });
 
@@ -316,7 +347,7 @@ window.addEventListener('load', () => {
                     start: 'top bottom',
                     scrub: 2,
                 },
-                yPercent: -200,
+                yPercent: -80,
             });
         });
     })();
