@@ -1,83 +1,3 @@
-@import '_mixings.scss';
-
-/********************* 변수 *************************/
-$kor-language: 'Noto Sans KR', sans-serif;
-$en-language: 'Poppins', sans-serif;
-$white-color: #fff;
-$block-color: #000;
-
-/****************** CSS reset *************************/
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: $en-language;
-    color: $white-color;
-}
-
-/* prettier-ignore */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-/* prettier-ignore */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-    line-height: 1;
-    background: $block-color;
-    user-select: none;
-    overflow-x: hidden;
-}
-ol,
-ul {
-    list-style: none;
-}
-blockquote,
-q {
-    quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-    background: #000;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 10px;
-}
 /**************** mouse *******************/
 .mouse-effect {
     position: absolute;
@@ -95,48 +15,6 @@ a {
         width: 100px;
         height: 100px;
         background: rgb(255, 255, 255);
-    }
-}
-
-/*********************** header *************************/
-.header {
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 600;
-    @include grid-padding;
-    padding-bottom: 0;
-    z-index: 99;
-
-    &_logo {
-        z-index: 99;
-    }
-
-    &_mobile-menu {
-        display: none;
-        padding: 0.75em 0.5em;
-        cursor: pointer;
-        z-index: 99;
-    }
-
-    nav {
-        ul {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            li {
-                &:not(:last-child) {
-                    margin-right: 2.375em;
-                }
-                a {
-                    padding: 0.75em 0.5em;
-                }
-            }
-        }
     }
 }
 
@@ -211,6 +89,7 @@ a {
         transform: rotate(360deg);
     }
 }
+
 /*********************** about *************************/
 .about {
     @include grid-padding;
@@ -486,20 +365,8 @@ a {
     }
 }
 
-footer {
-    @include grid-padding;
-    margin-top: 22.22222222222222vh;
-    text-align: center;
-    font-size: 16px;
-}
-
 /*********************** 반응형 1280px *************************/
 @media screen and (max-width: 1280px) {
-    .header {
-        padding-bottom: 0;
-        font-size: 14px;
-    }
-
     .main {
         margin-top: 52px;
     }
@@ -560,50 +427,6 @@ footer {
 
 /*********************** 반응형 640px *************************/
 @media screen and (max-width: 640px) {
-    .header {
-        padding-bottom: 0;
-
-        &_mobile-menu {
-            display: block;
-        }
-
-        nav {
-            opacity: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding-top: 112px;
-            padding-left: 12px;
-            background: #000;
-            transform: translateX(100%);
-            transition: 0.5s ease-out;
-            ul {
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-                font-size: 40px;
-
-                li {
-                    &:not(:last-child) {
-                        margin-right: 0;
-                        margin-bottom: 24px;
-                    }
-
-                    a {
-                        display: inline-block;
-                        padding: 12px 8px;
-                    }
-                }
-            }
-        }
-        .view-menu {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
     .main {
         margin-top: 55px;
 
@@ -716,9 +539,5 @@ footer {
                 }
             }
         }
-    }
-
-    footer {
-        font-size: 12px;
     }
 }

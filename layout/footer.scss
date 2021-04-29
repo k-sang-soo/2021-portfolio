@@ -1,0 +1,14 @@
+/*********************** footer *************************/
+footer {
+    @include grid-padding;
+    margin-top: 22.22222222222222vh;
+    text-align: center;
+    font-size: 16px;
+}
+
+/*********************** 반응형 640px *************************/
+@media screen and (max-width: 640px) {
+    footer {
+        font-size: 12px;
+    }
+}
