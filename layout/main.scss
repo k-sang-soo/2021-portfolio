@@ -95,7 +95,7 @@
     @include grid-padding;
 
     &_main-title-box {
-        p {
+        .text-wrapper {
             span {
                 @include seaction-title;
             }
@@ -197,7 +197,7 @@
     @include grid-padding;
     &_main-title-box {
         text-align: right;
-        p {
+        .text-wrapper {
             span {
                 @include seaction-title;
             }
@@ -325,7 +325,7 @@
 .contact {
     &_main-title-box {
         text-align: center;
-        p {
+        .text-wrapper {
             span {
                 @include seaction-title;
             }
